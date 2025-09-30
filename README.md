@@ -14,17 +14,16 @@ Este README inclui agora:
 6. Design System (resumo) + Acessibilidade
 7. Testes e Helpers
 8. Scripts e Execução
-9. Próximos Passos / Melhorias Futuras
-10. Perfil do Usuário (Atualização & Exclusão)
-11. Centralização de Mensagens (Toasts)
-12. Resumo Executivo (Changelog)
-13. Requisitos
-14. Instalação
-15. Desenvolvimento
-16. Build de Produção
-17. Estrutura
-18. Convenções
-19. Acessibilidade & UX
+9. Perfil do Usuário (Atualização & Exclusão)
+10. Centralização de Mensagens (Toasts)
+11. Resumo Executivo (Changelog)
+12. Requisitos
+13. Instalação
+14. Desenvolvimento
+15. Build de Produção
+16. Estrutura
+17. Convenções
+18. Acessibilidade & UX
 
 - Autenticação baseada em token (mockável via `VITE_AUTH_MOCK=true`).
 
