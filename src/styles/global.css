@@ -1,0 +1,394 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Material 3 Tokens (verde) */
+/*
+Z-INDEX LAYERS (referência rápida)
+---------------------------------
+ 210  Navbar anchor context
+ 500  Navbar dropdown menu
+ 520  Toast viewport
+ 600  Sidebar contact action menu (portal)
+ 640  Generic Modal overlay
+ 650  AccountModal (acima de modal genérico)
+ Ajustar aqui se surgirem novos overlays (ex: drawers, tooltips persistentes)
+*/
+:root {
+  color-scheme: light;
+  --md-sys-color-primary: #0b6b42;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #bff3d5;
+  --md-sys-color-on-primary-container: #002111;
+  --md-sys-color-secondary: #486556;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #cae9d7;
+  --md-sys-color-on-secondary-container: #0a1f15;
+  --md-sys-color-tertiary: #216a6a;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #bcebed;
+  --md-sys-color-on-tertiary-container: #012f31;
+  --md-sys-color-error: #b3261e;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #f9dedc;
+  --md-sys-color-on-error-container: #410e0b;
+  --md-sys-color-background: #fdfdfd;
+  --md-sys-color-on-background: #1d1b1f;
+  --md-sys-color-surface: #ffffff;
+  --md-sys-color-on-surface: #1d1b1f;
+  --md-sys-color-surface-variant: #dce6e0;
+  --md-sys-color-on-surface-variant: #424945;
+  --md-sys-color-outline: #6f7973;
+  --md-sys-color-outline-variant: #c5cec8;
+  --md-sys-color-inverse-surface: #2f3331;
+  --md-sys-color-inverse-on-surface: #f0f2f1;
+  --md-sys-color-inverse-primary: #86d8ac;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-scrim: rgba(0, 0, 0, 0.32);
+
+  /* Bridge HSL (legado) */
+  --color-bg: 255 100% 99%;
+  --color-bg-alt: 141 25% 96%;
+  --color-surface: 0 0% 100%;
+  --color-surface-alt: 141 20% 93%;
+  --color-border: 141 15% 75%;
+  --color-fg: 160 8% 20%;
+  --color-fg-muted: 160 6% 45%;
+  --color-primary: 141 72% 35%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-accent: 141 65% 30%;
+  --color-accent-foreground: 0 0% 100%;
+  --color-danger: 0 65% 50%;
+  --color-danger-foreground: 0 0% 100%;
+
+  --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.08),
+    0 1px 3px 1px rgba(0, 0, 0, 0.08);
+  --elevation-2: 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+    0 3px 6px 2px rgba(0, 0, 0, 0.12);
+  --elevation-3: 0 4px 8px 0 rgba(0, 0, 0, 0.12),
+    0 6px 12px 4px rgba(0, 0, 0, 0.14);
+  --transition-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-medium: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 360ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark {
+  color-scheme: dark;
+  --md-sys-color-primary: #86d8ac;
+  --md-sys-color-on-primary: #003921;
+  --md-sys-color-primary-container: #0f5333;
+  --md-sys-color-on-primary-container: #bff3d5;
+  --md-sys-color-secondary: #aecfbe;
+  --md-sys-color-on-secondary: #193428;
+  --md-sys-color-secondary-container: #2f4c3f;
+  --md-sys-color-on-secondary-container: #cae9d7;
+  --md-sys-color-tertiary: #97d0d2;
+  --md-sys-color-on-tertiary: #063f41;
+  --md-sys-color-tertiary-container: #1a5354;
+  --md-sys-color-on-tertiary-container: #bcebed;
+  --md-sys-color-error: #f2b8b5;
+  --md-sys-color-on-error: #601410;
+  --md-sys-color-error-container: #8c1d18;
+  --md-sys-color-on-error-container: #f9dedc;
+  --md-sys-color-background: #121512;
+  --md-sys-color-on-background: #dde2de;
+  --md-sys-color-surface: #121512;
+  --md-sys-color-on-surface: #dde2de;
+  --md-sys-color-surface-variant: #3a4540;
+  --md-sys-color-on-surface-variant: #b8c2bc;
+  --md-sys-color-outline: #89938d;
+  --md-sys-color-outline-variant: #3a4540;
+  --md-sys-color-inverse-surface: #e1e5e3;
+  --md-sys-color-inverse-on-surface: #223029;
+  --md-sys-color-inverse-primary: #0b6b42;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-scrim: rgba(0, 0, 0, 0.4);
+
+  --color-bg: 141 20% 8%;
+  --color-bg-alt: 141 15% 12%;
+  --color-surface: 141 15% 10%;
+  --color-surface-alt: 141 15% 14%;
+  --color-border: 141 12% 25%;
+  --color-fg: 141 15% 90%;
+  --color-primary: 141 60% 40%;
+  --color-primary-foreground: 210 40% 98%;
+  --color-accent: 141 55% 32%;
+  --color-accent-foreground: 210 40% 98%;
+  --color-danger: 0 65% 60%;
+  --color-danger-foreground: 0 0% 100%;
+}
+
+body {
+  background: hsl(var(--color-bg));
+  color: hsl(var(--color-fg));
+}
+
+/* Tipografia util */
+.typ-body-md {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.typ-label-sm {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.elev-1 {
+  box-shadow: var(--elevation-1);
+}
+.elev-2 {
+  box-shadow: var(--elevation-2);
+}
+.elev-3 {
+  box-shadow: var(--elevation-3);
+}
+.surface-variant {
+  background: var(--md-sys-color-surface-variant);
+}
+
+/* Alert semantic helpers (MD3) */
+.alert-error {
+  background: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+  border: 1px solid var(--md-sys-color-error);
+}
+.alert-success {
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  border: 1px solid var(--md-sys-color-primary);
+}
+.alert-warning {
+  background: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+  border: 1px solid var(--md-sys-color-tertiary);
+}
+.alert-info {
+  background: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface-variant);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.state-layer {
+  position: relative;
+  overflow: hidden;
+}
+.state-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+}
+.state-layer:hover::after {
+  opacity: 0.08;
+}
+.state-layer:active::after {
+  opacity: 0.16;
+}
+.dark .state-layer:hover::after {
+  opacity: 0.12;
+}
+.dark .state-layer:active::after {
+  opacity: 0.2;
+}
+
+/* Ripple */
+.md-ripple {
+  position: relative;
+  overflow: hidden;
+}
+.md-ripple .md-ripple-wave {
+  position: absolute;
+  border-radius: 9999px;
+  transform: scale(0);
+  animation: md-ripple 600ms ease-out;
+  background: currentColor;
+  opacity: 0.15;
+  pointer-events: none;
+}
+@keyframes md-ripple {
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* Gradiente telas auth */
+.auth-bg {
+  --g1: hsl(var(--color-primary) / 0.1);
+  --g2: hsl(var(--color-accent) / 0.12);
+  --g3: hsl(var(--color-primary) / 0.08);
+  background: radial-gradient(ellipse at 20% 15%, var(--g1), transparent 55%),
+    radial-gradient(ellipse at 80% 85%, var(--g2), transparent 60%),
+    radial-gradient(circle at 60% 40%, var(--g3), transparent 65%),
+    linear-gradient(
+      to bottom right,
+      hsl(var(--color-bg)),
+      hsl(var(--color-bg-alt))
+    );
+  position: relative; /* Keeping position relative */
+  overflow: hidden; /* Keeping overflow hidden */
+}
+.auth-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: none; /* Removing the background */
+  mix-blend-mode: normal; /* Changing blend mode to normal */
+  opacity: 0; /* Setting opacity to 0 */
+}
+.dark .auth-bg {
+  --g1: hsl(var(--color-primary) / 0.25);
+  --g2: hsl(var(--color-accent) / 0.22);
+  --g3: hsl(var(--color-primary) / 0.18);
+  background: radial-gradient(ellipse at 18% 18%, var(--g1), transparent 58%),
+    radial-gradient(ellipse at 78% 82%, var(--g2), transparent 62%),
+    radial-gradient(circle at 60% 35%, var(--g3), transparent 68%),
+    linear-gradient(
+      to bottom right,
+      hsl(var(--color-bg)),
+      hsl(var(--color-bg-alt)) 75%
+    );
+}
+.dark .auth-bg::before {
+  opacity: 0; /* Setting opacity to 0 */
+}
+html {
+  scroll-behavior: smooth;
+}
+* {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+::selection {
+  background: hsl(var(--color-primary) / 0.25);
+}
+
+/* Utility classes (não fornecidas pelo Tailwind diretamente) */
+.surface {
+  background: hsl(var(--color-surface));
+}
+.surface-alt {
+  background: hsl(var(--color-surface-alt));
+}
+.border-base {
+  border-color: hsl(var(--color-border));
+}
+.text-muted {
+  color: hsl(var(--color-fg-muted));
+}
+.bg-primary {
+  background: hsl(var(--color-primary));
+  color: hsl(var(--color-primary-foreground));
+}
+.focus-ring:focus-visible {
+  outline: 2px solid hsl(var(--color-primary));
+  outline-offset: 2px;
+}
+
+/* Blur quando modal aberta */
+body.modal-open-blur
+  #root
+  > div:not(.modal-exempt)
+  > *:not(.fixed):not(.absolute) {
+  filter: blur(3px) brightness(0.9);
+  transition: filter var(--transition-fast);
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* Thin scroll utility */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--color-border)) transparent;
+}
+.thin-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--color-border));
+  border-radius: 999px;
+}
+.thin-scroll::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--color-primary) / 0.6);
+}
+
+/* Contact menu items hover/focus realçado */
+[data-contact-menu-portal] .contact-menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 2 */
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.75rem; /* py-2 px-3 */
+  border-radius: 0.25rem; /* rounded-sm */
+  transition: background var(--transition-fast), color var(--transition-fast);
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+[role="menu"].fixed .contact-menu-item, /* dropdown navbar */
+.contact-menu-item:not(.initialized) {
+  /* fallback geral */
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+[role="menu"].fixed .contact-menu-item:hover,
+[role="menu"].fixed .contact-menu-item:focus-visible {
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+[role="menu"].fixed .contact-menu-item.danger:hover,
+[role="menu"].fixed .contact-menu-item.danger:focus-visible {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+}
+[data-contact-menu-portal] .contact-menu-item:hover,
+[data-contact-menu-portal] .contact-menu-item:focus-visible {
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+[data-contact-menu-portal] .contact-menu-item:active {
+  background: var(--md-sys-color-primary-container);
+  filter: brightness(0.95);
+}
+[data-contact-menu-portal] .contact-menu-item.danger:hover,
+[data-contact-menu-portal] .contact-menu-item.danger:focus-visible {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626; /* red-600 */
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(222.2 84% 4.9%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(217.2 32.6% 17.5%);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(217.2 91.2% 59.8%);
+}
